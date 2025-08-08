@@ -2,14 +2,12 @@
 {
     public static void Main(string[] args)
     {
-        DateTime dt = DateTime.Now;
+        int i = 5;
 
-        Console.WriteLine(dt.ToString());
-        Console.WriteLine("{0:d}",dt);
-        Console.WriteLine("{0:D}", dt);
-        Console.WriteLine("{0:f}", dt);
-        Console.WriteLine("{0:F}", dt);
-        Console.WriteLine("{0:g}", dt);
+        Console.WriteLine(" Value of is :" + (i++));  //Post Increment
+
+        Console.WriteLine(i);
+        
 
         Console.ReadLine();
 
