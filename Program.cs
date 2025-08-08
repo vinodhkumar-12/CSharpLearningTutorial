@@ -2,12 +2,11 @@
 {
     public static void Main(string[] args)
     {
-        int i = 5;
+        int i = 0;
 
-        Console.WriteLine(" Value of is :" + (++i));  //Pre Increment
-
-        Console.WriteLine(i);
+        string b = (i > 1) ? "variable i is greater than 1" : "variable i is less than 1";
         
+        Console.WriteLine(b);
 
         Console.ReadLine();
 
