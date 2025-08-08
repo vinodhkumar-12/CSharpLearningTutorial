@@ -14,7 +14,7 @@
             {
                 if (i == 5)
                 {
-                    continue;
+                    goto stop;
                 }
                 Console.WriteLine(i);
             }
@@ -22,6 +22,9 @@
 
 
         Console.WriteLine("Loop terminates");
+
+    stop:
+        Console.WriteLine("Terminates to here");
 
         Console.ReadLine();
     }
