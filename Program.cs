@@ -2,13 +2,35 @@
 {
     public static void Main(string[] args)
     {
-        int i = 0;
+        int week_number = 10;
 
-        string b = (i > 1) ? "variable i is greater than 1" : "variable i is less than 1";
-        
-        Console.WriteLine(b);
-
-        Console.ReadLine();
+        switch(week_number)
+        {
+            case 0:
+                Console.WriteLine("Week Day is Sunday");
+                break;
+            case 1:
+                Console.WriteLine("Week Day is Monday");
+                break;
+            case 2:
+                Console.WriteLine("Week Day is Tuesday");
+                break;
+            case 3:
+                Console.WriteLine("Week Day is Wednesday");
+                break;
+            case 4:
+                Console.WriteLine("Week Day is Thursday");
+                break;
+            case 5:
+                Console.WriteLine("Week Day is Friday");
+                break;
+            case 6:
+                Console.WriteLine("Week Day is Saturday");
+                break;
+            default:
+                Console.WriteLine("No Week Day exists for the mentioned week number");
+                break;
+        }
 
     }
 }
