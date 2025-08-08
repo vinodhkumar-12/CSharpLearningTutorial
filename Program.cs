@@ -3,14 +3,11 @@
     public static void Main(string[] args)
     {
 
-     
-        Program p = new Program();
-        p.Show();
-
-        Console.ReadLine();
+        Program.Show();
+       
     }
 
-    public void Show()
+    public static void Show()
     {
         Console.WriteLine("Welcome to C# programming");
     }
