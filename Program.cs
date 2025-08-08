@@ -3,13 +3,22 @@
     public static void Main(string[] args)
     {
 
-        int[] array = new int[6];
+        string[] names = new string[4];
 
-        array[0] = 1;
-        array[1] = 2;
-        array[2] = 3;
+        names[0] = "vinodh";
+        names[1] = "kumar";
+        names[2] = "vijay";
+        names[3] = "balakrishnan";
 
-        Console.WriteLine(array[0]);
+        //for (int i = 0; i < name.Length; i++)
+        //{
+        //    Console.WriteLine(name[i]);
+        //}
+
+        foreach(var name in names)
+        {
+            Console.WriteLine(name);
+        }
 
         Console.ReadLine();
     }
