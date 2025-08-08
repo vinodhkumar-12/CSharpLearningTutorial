@@ -2,14 +2,16 @@
 {
     public static void Main(string[] args)
     {
-        const double pi = 3.14;
+        DateTime dt = DateTime.Now;
 
-        string FName = "Vinodh";
-        string LName = "Kumar";
+        Console.WriteLine(dt.ToString());
+        Console.WriteLine("{0:d}",dt);
+        Console.WriteLine("{0:D}", dt);
+        Console.WriteLine("{0:f}", dt);
+        Console.WriteLine("{0:F}", dt);
+        Console.WriteLine("{0:g}", dt);
 
-        Console.WriteLine("Hello World!");
         Console.ReadLine();
 
-        Console.WriteLine("My name is {0} {1}",FName,LName);
     }
 }
