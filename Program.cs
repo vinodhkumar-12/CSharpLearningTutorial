@@ -3,32 +3,25 @@
     public static void Main(string[] args)
     {
 
-        //Multi - dimensional array
+        //Jagged array
 
-        int[,] array = new int[3, 4]
+        int[][] array = new int[3][];
+
+        array[0] = new int[] { 1, 2, 3, 4 };
+        array[1] = new int[] { 4, 5, 6, 7 };
+        array[2] = new int[] { 8, 9, 0, 1 };
+
+        for(int i=0; i<array.GetLength(0);i++)
         {
-            {11,22,33,44 },
-            {55,66,77,88 },
-            {99,11,22,33 }
-        };
+            for (int j = 0; j < array[i].Length;j++)
+            {
+                Console.Write(array[i][j] + " ");
+            }
 
-        //Console.WriteLine(array.GetLength(0));
-        //Console.WriteLine(array.GetLength(1));
-
-        //for(int i= 0; i < array.GetLength(0); i++)
-        //{
-        //    for(int j=0; j< array.GetLength(1);j++)
-        //    {
-        //        Console.Write(array[i, j] + " ");
-        //    }
-
-        //    Console.WriteLine();
-        //}
-
-        foreach (int i in array)
-        {
-            Console.WriteLine(i);
+            Console.WriteLine();
         }
+
+        
 
         Console.ReadLine();
     }
