@@ -4,7 +4,7 @@
     {
         int i = 5;
 
-        Console.WriteLine(" Value of is :" + (i++));  //Post Increment
+        Console.WriteLine(" Value of is :" + (++i));  //Pre Increment
 
         Console.WriteLine(i);
         
