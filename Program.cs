@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Text;
+using System.IO;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         Program program = new Program();
-        program.Function1();
-        program.Function2();
-        program.Function3();
+        string path = @"D:\Project\API\C#\test.txt";
+        string path2 = @"D:\Project\API\C#\test1.txt";
+        string text = "";
 
+        if (File.Exists(path))
+        {
+            Console.WriteLine("File Exists");
+            text = File.ReadAllText(path);
+            Console.WriteLine(text);
+
+            File.Copy(path, path2, true);
+        }
+        else
+        {
+            Console.WriteLine("File Not exists");
+        }
     }
 
-    public void Function1()
-    {
-        Console.WriteLine("Function 1 method");
-    }
 
-    public void Function2()
-    {
-        Console.WriteLine("Function 2 method");
-    }
-}
-
-
-public static class ProgramExtension
-{
-    public static void Function3(this Program p)
-    {
-        Console.WriteLine("This is my third function as extension method");
-    }
 }
