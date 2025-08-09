@@ -2,31 +2,21 @@
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        Queue queue = new Queue();
+        ArrayList list = new ArrayList();
+        int prevCapacity = list.Capacity;
 
-        queue.Enqueue("vinodh");
-        queue.Enqueue("22");
-        queue.Enqueue("kumar");
-        queue.Enqueue(1);
+        Console.WriteLine($"Initially Capacity = {prevCapacity}");
 
-
-        foreach(var item in queue)
+        for (int i = 0; i < 20; i++)
         {
-            Console.WriteLine(item);
+            list.Add(i);
+            if (list.Capacity != prevCapacity)
+            {
+                prevCapacity = list.Capacity;
+                Console.WriteLine($"After adding {i + 1} elements Capacity = {list.Capacity}");
+            }
         }
-
-        queue.Dequeue();
-
-        Console.WriteLine("After Dequeue the values are");
-
-        foreach (var item in queue)
-        {
-            Console.WriteLine(item);
-        }
-
-        Console.WriteLine("Current peek value is " + queue.Peek());
-
     }
 }
