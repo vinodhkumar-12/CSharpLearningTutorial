@@ -39,9 +39,9 @@ public class Program
 
         //Console.WriteLine(result);
 
-        showNumberDelegateMessage showNumberDelegateMessage = program.ShowNumber;
+        showNumberDelegateMessage showNumberDelegateMessage = new showNumberDelegateMessage(program.ShowNumber);
 
-        showNumberDelegateMessage(1);
+        showNumberDelegateMessage.Invoke(1);
     }
 }
 
