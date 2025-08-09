@@ -5,26 +5,53 @@ public class Program
 {
     public static void Main()
     {
-        // Create a StringBuilder
-        StringBuilder sb = new StringBuilder("Hello");
+        Program p = new Program();
+        //p.function1();
+        //p.function2();
+        //p.function3();
 
-        // --- PROPERTIES ---
-        Console.WriteLine("Capacity: " + sb.Capacity); // Default is 16
-        Console.WriteLine("Length: " + sb.Length);     // Current length
-        Console.WriteLine("MaxCapacity: " + sb.MaxCapacity);
+        Thread t1 = new Thread(p.function1);
+        Thread t2 = new Thread(p.function2);
+        Thread t3 = new Thread(p.function3);
 
-        // --- METHODS ---
-        sb.Append(" World");       // Add text at the end
-        sb.AppendLine("!");        // Add text + newline
-        sb.Insert(0, "Say: ");     // Insert at position
-        sb.Replace("World", "C#"); // Replace text
-        sb.Remove(0, 5);           // Remove from index 0, length 5
+        t1.Start();
+        t2.Start();
+        t3.Start();
 
-        // Convert to string
-        string result = sb.ToString();
-
-        Console.WriteLine("\nFinal String: " + result);
-        Console.WriteLine("Length Now: " + sb.Length);
-        Console.WriteLine("Capacity Now: " + sb.Capacity);
     }
+
+    public void function1()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            Console.WriteLine(i);
+            if (i == 25)
+            {
+                Console.WriteLine("Thread is sleeping for 8 seconds");
+                Thread.Sleep(8000);
+
+            }
+
+        }
+    }
+
+    public void function2()
+    {
+        for (int i = 50; i < 100; i++)
+        {
+            Console.WriteLine(i);
+
+        }
+
+    }
+
+    public void function3()
+    {
+        for (int i = 100; i < 150; i++)
+        {
+            Console.WriteLine(i);
+
+        }
+    }
+
 }
