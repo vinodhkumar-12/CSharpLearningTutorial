@@ -1,33 +1,18 @@
-﻿public delegate int showNumberDelegateMessage(int a);
+﻿public delegate void showNumberDelegateMessage(int a);
 
-public static class Program
+public class Program
 {
-    public static void show()
-    {
-        Console.WriteLine("Hello World!");
-    }
 
-    public static void ShowNumber(int a)
+    public void MyMethod(showNumberDelegateMessage showNumberDel, int a)
     {
         a += 10;
-        Console.WriteLine(a);
+        showNumberDel.Invoke(a);
     }
-
     public static void Main(string[] args)
     {
-        //showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber;
-        //showNumberDelegateMessage(5);
+        Program p = new Program();
 
-        showNumberDelegateMessage showNumberDelegateMessage = delegate (int a)
-        {
-            a += 10;
-            return a;
-            //Console.WriteLine(a);
-        };
-
-        int result = showNumberDelegateMessage.Invoke(5);
-
-        Console.WriteLine(result);
+        p.MyMethod(delegate (int b) { b = b + 10; Console.Write(b); }, 5);
     }
 }
 
