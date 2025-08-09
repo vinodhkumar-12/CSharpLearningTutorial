@@ -5,26 +5,36 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        try
-        {
-            Console.WriteLine("Enter the first number");
-            int num1 = Convert.ToInt32(Console.ReadLine());
+        Employee p = new Employee();
+        p.Name = "Vinodh";
+        p.Age = 28;
 
-            Console.WriteLine("Enter the second number");
-            int num2 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Name is : " + p.GetEmployeeName());
+        Console.WriteLine("Age is : " + p.GetAge());
+    }
+}
 
-            int result = num1 + num2;
 
-            Console.WriteLine("Sum of two number is {0}", result);
 
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Entered number is not integer type");
-        }
-        finally
-        {
-            Console.WriteLine("Finally Block execute every time");
-        }
+public partial class Employee
+{
+    private string _name;
+    private int _age;
+}
+
+
+public partial class Employee
+{
+    public string Name { get { return this._name; } set { this._name = value; } }
+    public int Age { get { return this._age; } set { this._age = value; } }
+
+    public string GetEmployeeName()
+    {
+        return this._name;
+    }
+
+    public int GetAge()
+    {
+        return this._age;
     }
 }
