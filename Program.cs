@@ -5,36 +5,24 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Employee p = new Employee();
-        p.Name = "Vinodh";
-        p.Age = 28;
 
-        Console.WriteLine("Name is : " + p.GetEmployeeName());
-        Console.WriteLine("Age is : " + p.GetAge());
+        Program p = new Program();
+        //p.AddNumbers(new int[4] { 1, 2, 3, 4 });
+
+        Console.WriteLine("Sum of provided value is : " + p.AddNumbers(1, 2, 3, 4));
     }
-}
 
 
-
-public partial class Employee
-{
-    private string _name;
-    private int _age;
-}
-
-
-public partial class Employee
-{
-    public string Name { get { return this._name; } set { this._name = value; } }
-    public int Age { get { return this._age; } set { this._age = value; } }
-
-    public string GetEmployeeName()
+    public int AddNumbers(params int[] numbers)
     {
-        return this._name;
+        int sum = 0;
+
+        foreach (int num in numbers)
+        {
+            sum += num;
+        }
+
+        return sum;
     }
 
-    public int GetAge()
-    {
-        return this._age;
-    }
 }
