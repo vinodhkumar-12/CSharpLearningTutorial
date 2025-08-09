@@ -1,47 +1,26 @@
-﻿public delegate void showDelegateMessage();
-public delegate int AddDelegateMessage(int num1, int num2);
-public delegate void showNumberDelegateMessage(int a);
+﻿public delegate void showNumberDelegateMessage(int a);
 
-public class Program
+public static class Program
 {
-    public void show()
+    public static void show()
     {
         Console.WriteLine("Hello World!");
     }
 
-    public void ShowNumber(int a)
+    public static void ShowNumber(int a)
     {
         a += 10;
         Console.WriteLine(a);
     }
 
-    public static void ShowStaticNumber(int a)
-    {
-        a += 10;
-        Console.WriteLine(a);
-    }
-
-    public int AddNumber(int num1, int num2)
+    public static int AddNumber(int num1, int num2)
     {
         return num1 + num2;
     }
     public static void Main(string[] args)
     {
-        Program program = new Program();
-
-        //showDelegateMessage showdel= program.show;
-
-        //showdel();
-
-        //AddDelegateMessage addDelegateMessage = program.AddNumber;
-
-        //int result = addDelegateMessage(1, 2);
-
-        //Console.WriteLine(result);
-
-        showNumberDelegateMessage showNumberDelegateMessage = new showNumberDelegateMessage(program.ShowNumber);
-
-        showNumberDelegateMessage.Invoke(1);
+        showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber;
+        showNumberDelegateMessage(5);
     }
 }
 
