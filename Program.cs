@@ -7,9 +7,15 @@ public static class Program
         Console.WriteLine("Hello World!");
     }
 
-    public static void ShowNumber(int a)
+    public static void ShowNumber1(int a)
     {
         a += 10;
+        Console.WriteLine(a);
+    }
+
+    public static void ShowNumber2(int a)
+    {
+        a += 15;
         Console.WriteLine(a);
     }
 
@@ -19,7 +25,8 @@ public static class Program
     }
     public static void Main(string[] args)
     {
-        showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber;
+        showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber1;
+        showNumberDelegateMessage += Program.ShowNumber2;
         showNumberDelegateMessage(5);
     }
 }
