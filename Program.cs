@@ -1,18 +1,31 @@
-﻿public delegate void showNumberDelegateMessage(int a);
+﻿public delegate int squareNumberDelegateMessage(int a);
 
 public class Program
 {
 
-    public void MyMethod(showNumberDelegateMessage showNumberDel, int a)
-    {
-        a += 10;
-        showNumberDel.Invoke(a);
-    }
     public static void Main(string[] args)
     {
-        Program p = new Program();
 
-        p.MyMethod(delegate (int b) { b = b + 10; Console.Write(b); }, 5);
+        Console.WriteLine("Enter the number to make it squaree");
+
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        //squareNumberDelegateMessage sqdel = delegate (int a)
+        //{
+        //    a = a * a;
+        //    return a;
+        //};
+
+        squareNumberDelegateMessage sqdel = (a) =>
+        {
+            a = a * a;
+            return a;
+        };
+
+        int sqlnumberseult = sqdel.Invoke(num);
+
+        Console.WriteLine("Square of entered number is : " + sqlnumberseult);
+
     }
 }
 
