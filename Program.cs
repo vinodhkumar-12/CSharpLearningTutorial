@@ -15,7 +15,7 @@ public class Program
 
         foreach (var directory_info in directories_info)
         {
-            Console.WriteLine(directory_info.Name);
+            Console.WriteLine("Directory Name is : " + directory_info.Name + " and count of file in directory is : " + directory_info.GetFiles().Length);
         }
 
 
