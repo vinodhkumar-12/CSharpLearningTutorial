@@ -1,28 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 
 public class Program
 {
-
-    public static void Main(string[] args)
+    public static void Main()
     {
-        StringBuilder s = new StringBuilder();
-        
-        Stopwatch sw = new Stopwatch();
+        // Create a StringBuilder
+        StringBuilder sb = new StringBuilder("Hello");
 
-        sw.Start();
-        for(int i=0;i<10000;i++)
-        {
-            s.Append(i);
-        }
+        // --- PROPERTIES ---
+        Console.WriteLine("Capacity: " + sb.Capacity); // Default is 16
+        Console.WriteLine("Length: " + sb.Length);     // Current length
+        Console.WriteLine("MaxCapacity: " + sb.MaxCapacity);
 
-        sw.Stop();
+        // --- METHODS ---
+        sb.Append(" World");       // Add text at the end
+        sb.AppendLine("!");        // Add text + newline
+        sb.Insert(0, "Say: ");     // Insert at position
+        sb.Replace("World", "C#"); // Replace text
+        sb.Remove(0, 5);           // Remove from index 0, length 5
 
-        Console.WriteLine("Time taken to complete the string construction is : " + sw.ElapsedMilliseconds);
+        // Convert to string
+        string result = sb.ToString();
 
-        Console.WriteLine(s);
+        Console.WriteLine("\nFinal String: " + result);
+        Console.WriteLine("Length Now: " + sb.Length);
+        Console.WriteLine("Capacity Now: " + sb.Capacity);
     }
-
 }
