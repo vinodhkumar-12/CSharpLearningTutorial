@@ -1,31 +1,43 @@
-﻿public delegate int squareNumberDelegateMessage(int a);
+﻿public class Person
+{
+    public void show1()
+    {
+        Console.WriteLine("Person Class");
+    }
+
+}
+
+
+public interface Employee
+{
+    public void show2();
+}
+
+
+public class Teacher : Person, Employee
+{
+    public void show3()
+    {
+        Console.WriteLine("Teacher Class");
+    }
+
+    public void show2()
+    {
+        Console.WriteLine("Employee Class");
+    }
+}
 
 public class Program
 {
-
     public static void Main(string[] args)
     {
-
-        Console.WriteLine("Enter the number to make it squaree");
-
-        int num = Convert.ToInt32(Console.ReadLine());
-
-        //squareNumberDelegateMessage sqdel = delegate (int a)
-        //{
-        //    a = a * a;
-        //    return a;
-        //};
-
-        squareNumberDelegateMessage sqdel = (a) =>
-        {
-            a = a * a;
-            return a;
-        };
-
-        int sqlnumberseult = sqdel.Invoke(num);
-
-        Console.WriteLine("Square of entered number is : " + sqlnumberseult);
-
+        Teacher teacher = new Teacher();
+        teacher.show3();
+        teacher.show1();
+        teacher.show2();
     }
 }
+
+
+
 
