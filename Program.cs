@@ -1,40 +1,31 @@
-﻿public class Person
-{
-    public void show1()
-    {
-        Console.WriteLine("Person Class");
-    }
-
-}
-
-
-public interface Employee
-{
-    public void show2();
-}
-
-
-public class Teacher : Person, Employee
-{
-    public void show3()
-    {
-        Console.WriteLine("Teacher Class");
-    }
-
-    public void show2()
-    {
-        Console.WriteLine("Employee Class");
-    }
-}
+﻿using System.Collections;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        Teacher teacher = new Teacher();
-        teacher.show3();
-        teacher.show1();
-        teacher.show2();
+        Hashtable hashtable = new Hashtable();
+        hashtable.Add("Id", 1);
+        hashtable.Add("FirstName", "Vinodh");
+        hashtable.Add("LastName", "Kumar");
+        hashtable.Add("Age", 28);
+        // hashtable.Add("Age", 28); same key should not be mentioned more than one in hash table
+
+
+        hashtable.Remove("Age");
+
+        bool isLastNameExists = hashtable.Contains("LastName");
+
+        foreach (string key in hashtable.Keys)
+        {
+            Console.WriteLine(key + " " + hashtable[key]);
+        }
+
+
+        Console.WriteLine(isLastNameExists);
+        Console.WriteLine(hashtable.GetHashCode());
+
+
     }
 }
 
