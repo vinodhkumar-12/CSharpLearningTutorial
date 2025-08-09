@@ -1,45 +1,44 @@
 ﻿public class Program
 {
-   
+
     public static void Main(string[] args)
     {
-        Person vinodh_detail = new Person("Vinodh", 28);
-        Console.WriteLine("Entered name is {0}", vinodh_detail.GetName());
-        Console.WriteLine("Entered Age is {0}", vinodh_detail.GetAge());
-        Console.WriteLine("-----------------------");
+        Person person = new Person();
 
-        Person vijay_detail = new Person("Vijay", 26);
-        Console.WriteLine("Entered name is {0}", vijay_detail.GetName());
-        Console.WriteLine("Entered Age is {0}", vijay_detail.GetAge());
+        person.SetId(1);
+        person.SetName("Vinodh");
+
+
+        Console.WriteLine(person.GetId() + " " + person.GetName());
+
     }
 
-    
+
 }
 
 public class Person
 {
-    private string Name { get; set; }
-    private int Age { get; set; }
+    private int Id;
+    private string Name;
 
-    public Person(string name, int age)
+    public int GetId()
     {
-        this.Name = name;
-        this.Age = age;
+        return this.Id;
     }
 
     public string GetName()
-    {
-        return this.Name;
+    { 
+        return this.Name; 
     }
 
-    public int GetAge()
+    public void SetId(int Id)
     {
-        return this.Age;
+        this.Id = Id;
     }
 
-    ~Person()
+    public void SetName(string name)
     {
-        Console.WriteLine("Destructor Invoked");
+        this.Name = name;
     }
 
 }
