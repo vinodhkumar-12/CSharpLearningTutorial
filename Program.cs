@@ -4,23 +4,29 @@
     public static void Main(string[] args)
     {
 
-        DerivedClass derivedClass = new DerivedClass();
+        //DerivedClass derivedClass = new DerivedClass();
+        //derivedClass.show();
 
-        derivedClass.show();
-        derivedClass.Name = "Foo";
+        //BaseClass baseClass = new BaseClass();
+        //baseClass.show();
 
-        Console.WriteLine(derivedClass.Name);
+        BaseClass baseClass1 = new DerivedClass();
+        baseClass1.show();
+    }
+
+    public override void show()
+    {
+        Console.WriteLine("Hello World from Derived Class itself!!!");
     }
 
 }
 
-public class BaseClass  //if class is mentioned sealed then it cannot be inherited by the Derived class or any other classes, since compiler will generate an error
+public class BaseClass
 {
-    public string Name { get; set; }
-   
-    public void show()
+
+    public virtual void show()
     {
-        Console.WriteLine("Hello World");
+        Console.WriteLine("Hello World from Base Class");
     }
 }
 
