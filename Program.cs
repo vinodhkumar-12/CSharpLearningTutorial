@@ -1,4 +1,4 @@
-﻿public delegate void showNumberDelegateMessage(int a);
+﻿public delegate int showNumberDelegateMessage(int a);
 
 public static class Program
 {
@@ -7,27 +7,27 @@ public static class Program
         Console.WriteLine("Hello World!");
     }
 
-    public static void ShowNumber1(int a)
+    public static void ShowNumber(int a)
     {
         a += 10;
         Console.WriteLine(a);
     }
 
-    public static void ShowNumber2(int a)
-    {
-        a += 15;
-        Console.WriteLine(a);
-    }
-
-    public static int AddNumber(int num1, int num2)
-    {
-        return num1 + num2;
-    }
     public static void Main(string[] args)
     {
-        showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber1;
-        showNumberDelegateMessage += Program.ShowNumber2;
-        showNumberDelegateMessage(5);
+        //showNumberDelegateMessage showNumberDelegateMessage = Program.ShowNumber;
+        //showNumberDelegateMessage(5);
+
+        showNumberDelegateMessage showNumberDelegateMessage = delegate (int a)
+        {
+            a += 10;
+            return a;
+            //Console.WriteLine(a);
+        };
+
+        int result = showNumberDelegateMessage.Invoke(5);
+
+        Console.WriteLine(result);
     }
 }
 
