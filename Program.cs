@@ -3,42 +3,27 @@
 
     public static void Main(string[] args)
     {
-        Person person = new Person();
 
-        person.SetId(1);
-        person.SetName("Vinodh");
+        //Method Overloading
+        Program p = new Program();
 
+        int result_sum_of_two_numbers =  p.AddNumber(1, 2);
+        int result_sum_of_three_numbers =  p.AddNumber(2, 3,4);
 
-        Console.WriteLine(person.GetId() + " " + person.GetName());
+        Console.WriteLine(result_sum_of_two_numbers);
+        Console.WriteLine(result_sum_of_three_numbers);
 
     }
 
+    public int AddNumber(int num1, int num2)
+    {
+        return num1 + num2;
+    }
+
+    public int AddNumber(int num1, int num2, int num3)
+    {
+        return (num1 + num2) + num3;
+    }
 
 }
 
-public class Person
-{
-    private int Id;
-    private string Name;
-
-    public int GetId()
-    {
-        return this.Id;
-    }
-
-    public string GetName()
-    { 
-        return this.Name; 
-    }
-
-    public void SetId(int Id)
-    {
-        this.Id = Id;
-    }
-
-    public void SetName(string name)
-    {
-        this.Name = name;
-    }
-
-}
