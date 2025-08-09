@@ -6,23 +6,20 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Program program = new Program();
-        string path = @"D:\Project\API\C#\test.txt";
-        string path2 = @"D:\Project\API\C#\test1.txt";
-        string text = "";
+        string path = @"D:\My Directory";
+        string path2 = @"D:\My Directory 2";
 
-        if (File.Exists(path))
-        {
-            Console.WriteLine("File Exists");
-            text = File.ReadAllText(path);
-            Console.WriteLine(text);
+        DirectoryInfo dir = new DirectoryInfo(path2);
 
-            File.Copy(path, path2, true);
-        }
-        else
-        {
-            Console.WriteLine("File Not exists");
-        }
+
+        //dir.Create();
+        //dir.CreateSubdirectory("Another Directory");
+        //dir.MoveTo(path2);
+
+        dir.Delete(true);
+
+        Console.WriteLine("Directory Deleted");
+
     }
 
 
