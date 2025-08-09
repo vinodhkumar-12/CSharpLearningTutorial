@@ -1,26 +1,45 @@
 ﻿public class Program
 {
+   
     public static void Main(string[] args)
     {
+        Person vinodh_detail = new Person("Vinodh", 28);
+        Console.WriteLine("Entered name is {0}", vinodh_detail.GetName());
+        Console.WriteLine("Entered Age is {0}", vinodh_detail.GetAge());
+        Console.WriteLine("-----------------------");
 
-        int num1 = 0;
-        Console.WriteLine("Enter the number 1");
-        num1 = Convert.ToInt32(Console.ReadLine());
-
-        int num2 = 0;
-        Console.WriteLine("Enter the number 2");
-        num2 = Convert.ToInt32(Console.ReadLine());
-
-        Program p = new Program();
-        
-        int result = p.AddNumbers(num1, num2);
-
-        Console.WriteLine("Sum of Two Number is : {0}", result);
-
+        Person vijay_detail = new Person("Vijay", 26);
+        Console.WriteLine("Entered name is {0}", vijay_detail.GetName());
+        Console.WriteLine("Entered Age is {0}", vijay_detail.GetAge());
     }
 
-    public int AddNumbers(int num1, int num2)
+    
+}
+
+public class Person
+{
+    private string Name { get; set; }
+    private int Age { get; set; }
+
+    public Person(string name, int age)
     {
-        return num1 + num2;
+        this.Name = name;
+        this.Age = age;
     }
+
+    public string GetName()
+    {
+        return this.Name;
+    }
+
+    public int GetAge()
+    {
+        return this.Age;
+    }
+
+    ~Person()
+    {
+        Console.WriteLine("Destructor Invoked");
+    }
+
 }
