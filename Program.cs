@@ -3,46 +3,28 @@ using System.Collections.Generic;
 
 public class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
-        // Create a dictionary with <string, int>
-        Dictionary<string, int> ages = new Dictionary<string, int>();
-
-        // Adding elements
-        ages.Add("Vinodh", 28);
-        ages.Add("Vijay", 26);
-        ages.Add("Harish", 28);
-
-        // Accessing value by key
-        Console.WriteLine("Vinodh's Age: " + ages["Vinodh"]);
-
-        // Updating value
-        ages["Vijay"] = 27;
-
-        // Checking if key exists before adding
-        if (!ages.ContainsKey("Vasanth"))
+        try
         {
-            ages.Add("Vasanth", 27);
+            Console.WriteLine("Enter the first number");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter the second number");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+
+            int result = num1 + num2;
+
+            Console.WriteLine("Sum of two number is {0}", result);
+
         }
-
-        // Iterating through dictionary
-        Console.WriteLine("\nAll entries:");
-        foreach (KeyValuePair<string, int> entry in ages)
+        catch (Exception ex)
         {
-            Console.WriteLine($"{entry.Key}   {entry.Value}");
+            Console.WriteLine("Entered number is not integer type");
         }
-
-        // Removing a key-value pair
-        ages.Remove("Harish");
-
-        // TryGetValue example (safe lookup)
-        if (ages.TryGetValue("Naresh", out int age))
+        finally
         {
-            Console.WriteLine($"Naresh's Age: {age}");
-        }
-        else
-        {
-            Console.WriteLine("Naresh not found.");
+            Console.WriteLine("Finally Block execute every time");
         }
     }
 }
