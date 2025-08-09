@@ -3,55 +3,31 @@ using System.Text;
 
 public class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
-        Program p = new Program();
-        //p.function1();
-        //p.function2();
-        //p.function3();
-
-        Thread t1 = new Thread(p.function1);
-        Thread t2 = new Thread(p.function2);
-        Thread t3 = new Thread(p.function3);
-
-        t1.Start();
-        t2.Start();
-        t3.Start();
+        Program program = new Program();
+        program.Function1();
+        program.Function2();
+        program.Function3();
 
     }
 
-    public void function1()
+    public void Function1()
     {
-        for (int i = 0; i < 50; i++)
-        {
-            Console.WriteLine(i);
-            if (i == 25)
-            {
-                Console.WriteLine("Thread is sleeping for 8 seconds");
-                Thread.Sleep(8000);
-
-            }
-
-        }
+        Console.WriteLine("Function 1 method");
     }
 
-    public void function2()
+    public void Function2()
     {
-        for (int i = 50; i < 100; i++)
-        {
-            Console.WriteLine(i);
-
-        }
-
+        Console.WriteLine("Function 2 method");
     }
+}
 
-    public void function3()
+
+public static class ProgramExtension
+{
+    public static void Function3(this Program p)
     {
-        for (int i = 100; i < 150; i++)
-        {
-            Console.WriteLine(i);
-
-        }
+        Console.WriteLine("This is my third function as extension method");
     }
-
 }
