@@ -4,32 +4,29 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Stack stack = new Stack();
+        Queue queue = new Queue();
 
-        stack.Push(1);
-        stack.Push(2);
-        stack.Push(3);
-        stack.Push("vinodh");
-        stack.Push(null);
-        stack.Push(1.000);
+        queue.Enqueue("vinodh");
+        queue.Enqueue("22");
+        queue.Enqueue("kumar");
+        queue.Enqueue(1);
 
-        foreach(var item in stack)
+
+        foreach(var item in queue)
         {
             Console.WriteLine(item);
         }
 
+        queue.Dequeue();
 
-        stack.Pop();
+        Console.WriteLine("After Dequeue the values are");
 
-        Console.WriteLine("After Pop done");
-
-        foreach(var item in stack)
+        foreach (var item in queue)
         {
             Console.WriteLine(item);
         }
 
-        Console.WriteLine("Peek Value is : ");
+        Console.WriteLine("Current peek value is " + queue.Peek());
 
-        Console.WriteLine(stack.Peek());
     }
 }
