@@ -8,17 +8,20 @@ public class Program
     {
         string filepath = @"D:\MyFile.txt";
 
-        using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write))
+        using (FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
         {
-            string content = "Hello World!";
 
-            byte[] bytes = Encoding.UTF8.GetBytes(content);
+            byte[] bytes = new byte[fs.Length];
 
-            fs.Write(bytes, 0, bytes.Length);
+            fs.Read(bytes, 0, bytes.Length);
+
+            string content = Encoding.UTF8.GetString(bytes);
+
+            Console.WriteLine(content);
 
         }
 
-        Console.WriteLine("File Stream Write done succesfully");
+        Console.WriteLine("File Stream Read done succesfully");
 
     }
 }
