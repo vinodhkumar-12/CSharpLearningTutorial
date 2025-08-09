@@ -14,7 +14,7 @@
 
 }
 
-public class BaseClass 
+public class BaseClass  //if class is mentioned sealed then it cannot be inherited by the Derived class or any other classes, since compiler will generate an error
 {
     public string Name { get; set; }
    
