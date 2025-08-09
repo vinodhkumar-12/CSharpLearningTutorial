@@ -9,7 +9,9 @@ public class Program
         stack.Push(1);
         stack.Push(2);
         stack.Push(3);
-        stack.Push(4);
+        stack.Push("vinodh");
+        stack.Push(null);
+        stack.Push(1.000);
 
         foreach(var item in stack)
         {
