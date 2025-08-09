@@ -1,37 +1,47 @@
-﻿public class DerivedClass : BaseClass
-{
+﻿public delegate void showDelegateMessage();
+public delegate int AddDelegateMessage(int num1, int num2);
+public delegate void showNumberDelegateMessage(int a);
 
-    public sealed override void show()
+public class Program
+{
+    public void show()
     {
-        Console.WriteLine("Hello World from Derived Class itself!!!");
+        Console.WriteLine("Hello World!");
     }
 
-}
-
-public class SubDerivedClass : DerivedClass
-{
-    //public override void show()
-    //{
-    //    Console.WriteLine("Hello World from Sub Derived Class itself!!!");
-    //}
-}
-
-public class BaseClass
-{
-
-    public virtual void show()
+    public void ShowNumber(int a)
     {
-        Console.WriteLine("Hello World from Base Class");
+        a += 10;
+        Console.WriteLine(a);
     }
-}
 
+    public static void ShowStaticNumber(int a)
+    {
+        a += 10;
+        Console.WriteLine(a);
+    }
 
-public class Progran
-{
+    public int AddNumber(int num1, int num2)
+    {
+        return num1 + num2;
+    }
     public static void Main(string[] args)
     {
-        BaseClass baseClass = new SubDerivedClass();
-        baseClass.show();
+        Program program = new Program();
+
+        //showDelegateMessage showdel= program.show;
+
+        //showdel();
+
+        //AddDelegateMessage addDelegateMessage = program.AddNumber;
+
+        //int result = addDelegateMessage(1, 2);
+
+        //Console.WriteLine(result);
+
+        showNumberDelegateMessage showNumberDelegateMessage = program.ShowNumber;
+
+        showNumberDelegateMessage(1);
     }
 }
 
