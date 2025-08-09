@@ -1,38 +1,48 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
+        // Create a dictionary with <string, int>
+        Dictionary<string, int> ages = new Dictionary<string, int>();
 
-        List<Employee> employees = new List<Employee>()
+        // Adding elements
+        ages.Add("Vinodh", 28);
+        ages.Add("Vijay", 26);
+        ages.Add("Harish", 28);
+
+        // Accessing value by key
+        Console.WriteLine("Vinodh's Age: " + ages["Vinodh"]);
+
+        // Updating value
+        ages["Vijay"] = 27;
+
+        // Checking if key exists before adding
+        if (!ages.ContainsKey("Vasanth"))
         {
-            new Employee() { FirstName = "Vinodh", LastName = "Kumar", Age = 28 },
-            new Employee() {  FirstName = "Vijay", LastName = "Kumar", Age = 26 },
-             new Employee() {  FirstName = "Harish", LastName = "Lakshmanan", Age = 28 },
-              new Employee() {  FirstName = "Vasanth", LastName = "Kumar", Age = 27 },
-               new Employee() {  FirstName = "Naresh", LastName = "Pandi", Age = 28 }
-        };
-
-        //Employee hari_employee = employees.Where(x => x.FirstName == "Harish").FirstOrDefault();
-
-        //employees.Remove(hari_employee);
-
-        //employees.RemoveAt(1);
-
-        //employees.RemoveRange(1, 2);
-
-        employees.RemoveAll(x => x.Age == 28);
-
-        foreach (Employee employee in employees)
-        {
-            Console.WriteLine(employee.FirstName + " " + employee.LastName);
+            ages.Add("Vasanth", 27);
         }
-    }
-    public class Employee
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
+
+        // Iterating through dictionary
+        Console.WriteLine("\nAll entries:");
+        foreach (KeyValuePair<string, int> entry in ages)
+        {
+            Console.WriteLine($"{entry.Key}   {entry.Value}");
+        }
+
+        // Removing a key-value pair
+        ages.Remove("Harish");
+
+        // TryGetValue example (safe lookup)
+        if (ages.TryGetValue("Naresh", out int age))
+        {
+            Console.WriteLine($"Naresh's Age: {age}");
+        }
+        else
+        {
+            Console.WriteLine("Naresh not found.");
+        }
     }
 }
