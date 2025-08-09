@@ -6,18 +6,19 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string path = @"D:\Study Material";
+        string filepath = @"D:\MyFile.txt";
 
-        DirectoryInfo dir = new DirectoryInfo(path);
-
-        DirectoryInfo[] directories_info = dir.GetDirectories();
-
-
-        foreach (var directory_info in directories_info)
+        using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write))
         {
-            Console.WriteLine("Directory Name is : " + directory_info.Name + " and count of file in directory is : " + directory_info.GetFiles().Length);
+            string content = "Hello World!";
+
+            byte[] bytes = Encoding.UTF8.GetBytes(content);
+
+            fs.Write(bytes, 0, bytes.Length);
+
         }
 
+        Console.WriteLine("File Stream Write done succesfully");
 
     }
 }
