@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 
 public class Program
 {
 
     public static void Main(string[] args)
     {
-        string s = "";
+        StringBuilder s = new StringBuilder();
         
         Stopwatch sw = new Stopwatch();
 
         sw.Start();
         for(int i=0;i<10000;i++)
         {
-            s += i;
+            s.Append(i);
         }
 
         sw.Stop();
