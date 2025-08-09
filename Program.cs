@@ -4,26 +4,35 @@
     public static void Main(string[] args)
     {
 
-        //Method Overloading
-        Program p = new Program();
+        Person obj_first_name = new Person();
 
-        int result_sum_of_two_numbers =  p.AddNumber(1, 2);
-        int result_sum_of_three_numbers =  p.AddNumber(2, 3,4);
+        obj_first_name.Name = "Vinodh";
 
-        Console.WriteLine(result_sum_of_two_numbers);
-        Console.WriteLine(result_sum_of_three_numbers);
 
+        Person obj_last_name = new Person();
+
+        obj_last_name.Name = "Kumar";
+
+        Person obj_full_name = new Person();
+
+        obj_full_name = obj_first_name + obj_last_name;
+
+        Console.WriteLine("Full name is {0}", obj_full_name.Name);
     }
 
-    public int AddNumber(int num1, int num2)
+}
+
+public class Person
+{
+    public string Name { get; set; }
+
+    public static Person operator +(Person obj_first_name, Person obj_last_name)
     {
-        return num1 + num2;
-    }
+        Person obj_full_name = new Person();
 
-    public int AddNumber(int num1, int num2, int num3)
-    {
-        return (num1 + num2) + num3;
-    }
+        obj_full_name.Name = obj_first_name.Name + " " + obj_last_name.Name;
 
+        return obj_full_name;
+    }
 }
 
