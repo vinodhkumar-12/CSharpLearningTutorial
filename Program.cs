@@ -6,21 +6,18 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string path = @"D:\My Directory";
-        string path2 = @"D:\My Directory 2";
+        string path = @"D:\Study Material";
 
-        DirectoryInfo dir = new DirectoryInfo(path2);
+        DirectoryInfo dir = new DirectoryInfo(path);
+
+        DirectoryInfo[] directories_info = dir.GetDirectories();
 
 
-        //dir.Create();
-        //dir.CreateSubdirectory("Another Directory");
-        //dir.MoveTo(path2);
+        foreach (var directory_info in directories_info)
+        {
+            Console.WriteLine(directory_info.Name);
+        }
 
-        dir.Delete(true);
-
-        Console.WriteLine("Directory Deleted");
 
     }
-
-
 }
