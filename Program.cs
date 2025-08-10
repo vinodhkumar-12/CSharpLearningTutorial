@@ -12,25 +12,28 @@ public class Program
         Program p = new Program();
         Console.WriteLine("Main Thread starting...");
 
-        Task t1 = Task.Run(p.GetDatabaseDetail);
-        Task t2 = Task.Run(p.GetDatabaseDetail);
-        Task t3 = Task.Run(p.GetDatabaseDetail);
+        Task t1 = p.GetDatabaseDetail();
 
-        Task.WaitAll(t1, t2, t3);
+        Task.WaitAll(t1);
 
         Console.WriteLine("Main Thread completed...");
 
-        Console.ReadKey();
+        //Console.ReadKey();
 
     }
 
-    public void GetDatabaseDetail()
+    public Task GetDatabaseDetail()
     {
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        Thread.Sleep(5000);
+        return Task.Run(() =>
+        {
 
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
+
+            Thread.Sleep(5000);
+
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
+        });
+
     }
-
 }
