@@ -7,34 +7,36 @@ using System.Text.Json;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public async static Task Main(string[] args)
     {
 
         Console.WriteLine("Main Program Executing...");
 
         Program p = new Program();
 
-        Task<int> t1 = Task.Run(() => p.GetDatabaseDetail());
-        Task<int> t2 = Task.Run(() => p.GetDatabaseDetail());
+        //Task<int> t1 = p.GetDatabaseDetail();
 
-        Task.WaitAll(t1, t2);
+        //Task<int> t2 = p.GetDatabaseDetail();
 
-        int result1 = t1.Result;
-        int result2 = t2.Result;
+        //int[] results = await Task.WhenAll(t1, t2);
+
+        int result1 = await p.GetDatabaseDetail();
+
+        int result2 = await p.GetDatabaseDetail();
 
         Console.WriteLine("Main Program Completed");
 
-        Console.WriteLine("Task 1 Result is {0}", result1);
-        Console.WriteLine("Task 2 Result is {0}", result2);
+        Console.WriteLine("Result of Task 1 is : {0}", result1);
+        Console.WriteLine("Result of Task 2 is : {0}", result2);
     }
 
-    public int GetDatabaseDetail()
+    public async Task<int> GetDatabaseDetail()
     {
 
         int i = 5;
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        Thread.Sleep(2000);
+        await Task.Delay(2000);
 
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
 
