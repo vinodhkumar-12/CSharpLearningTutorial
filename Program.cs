@@ -7,9 +7,10 @@ public class Program
     public static void Main(string[] args)
     {
         string name = "vinodh";
-        bool check = name is string;
 
-        Console.WriteLine(check);
+        string conversionname = name as string;
+
+        Console.WriteLine(conversionname);
 
     }
 }
