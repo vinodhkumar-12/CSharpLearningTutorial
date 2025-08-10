@@ -8,14 +8,14 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string FilePath = @"D:\MyFile.txt";
+        string filePath = @"D:\MyFile.txt";
 
-        Employee employee = new Employee() { Id = 1, Name = "Vinodh" };
+        // Deserialize JSON back to Employee object
+        string jsonString = File.ReadAllText(filePath);
+        Employee deserializedEmployee = JsonSerializer.Deserialize<Employee>(jsonString);
 
-        string jsonString = JsonSerializer.Serialize(employee);
-
-        File.WriteAllText(FilePath, jsonString);
-
+        Console.WriteLine("Employee object deserialized successfully.");
+        Console.WriteLine($"Id: {deserializedEmployee.Id}, Name: {deserializedEmployee.Name}");
     }
 }
 
