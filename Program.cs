@@ -4,26 +4,45 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 
-public class Program
+
+public interface IMessageService
 {
-    public static void Main(string[] args)
+    void SendMessage(string Message);
+}
+
+
+public class EmailService : IMessageService
+{
+    public void SendMessage(string Message)
     {
-        string filePath = @"D:\MyFile.txt";
-
-        // Deserialize JSON back to Employee object
-        string jsonString = File.ReadAllText(filePath);
-        Employee deserializedEmployee = JsonSerializer.Deserialize<Employee>(jsonString);
-
-        Console.WriteLine("Employee object deserialized successfully.");
-        Console.WriteLine($"Id: {deserializedEmployee.Id}, Name: {deserializedEmployee.Name}");
+        Console.WriteLine(Message);
     }
 }
 
 
-[Serializable]
-public class Employee
+public class Notification
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    private readonly IMessageService _messgaeService;
+
+    public Notification(IMessageService messgaeService)
+    {
+        _messgaeService = messgaeService;
+    }
+
+    public void Notify(string Message)
+    {
+        _messgaeService.SendMessage(Message);
+    }
+}
+
+public class Program
+{
+
+    public static void Main(string[] args)
+    {
+        IMessageService messageService = new EmailService();
+        Notification notification = new Notification(messageService);
+        notification.Notify("Hello World");
+    }
 
 }
