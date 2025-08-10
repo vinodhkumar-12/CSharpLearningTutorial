@@ -12,13 +12,15 @@ public class Program
         Program p = new Program();
         Console.WriteLine("Main Thread starting...");
 
-        Thread t1 = new Thread(p.GetDatabaseDetail);
+        Task t1 = Task.Run(p.GetDatabaseDetail);
+        Task t2 = Task.Run(p.GetDatabaseDetail);
+        Task t3 = Task.Run(p.GetDatabaseDetail);
 
-        t1.Start();
-
-        //t1.Join();
+        Task.WaitAll(t1, t2, t3);
 
         Console.WriteLine("Main Thread completed...");
+
+        Console.ReadKey();
 
     }
 
@@ -26,7 +28,7 @@ public class Program
     {
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        Thread.Sleep(2000);
+        Thread.Sleep(5000);
 
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
     }
