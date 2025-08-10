@@ -9,19 +9,20 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        //Console.BackgroundColor = ConsoleColor.Green;
-        //Console.ForegroundColor = ConsoleColor.Blue;
-        //Console.WriteLine(Days.Sunday);
+        string[] members = Enum.GetNames(typeof(Days));
 
-        //Days day = Days.Sunday;
+        foreach (string member in members)
+        {
+            Console.WriteLine(member);
+        }
 
-        Days day = (Days)1;
+        int[] values = (int[])Enum.GetValues(typeof(Days));
 
-        int value = (int)day;
+        foreach (int value in values)
+        {
+            Console.WriteLine(value);
+        }
 
-        Console.WriteLine(day + " " + value);
-
-        Console.ReadLine();
     }
 
 }
