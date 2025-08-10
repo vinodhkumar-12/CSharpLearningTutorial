@@ -38,12 +38,15 @@ public class Program
 
     public void Function()
     {
-        lock (_lock)
+        try
         {
-            Console.WriteLine("Thread Id is : {0}", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("Thread Id is {0} is Sleeping", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(5000);
-            Console.WriteLine("Thread Id is {0} is Completed", Thread.CurrentThread.ManagedThreadId);
+            Monitor.Enter(_lock);
+            Console.WriteLine("Thread Id : {0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Thread Id {0} is Sleeping", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(3000);
+            Console.WriteLine("Thread Id {0} is Completed", Thread.CurrentThread.ManagedThreadId);
         }
+        finally { Monitor.Exit(_lock); }
+
     }
 }
