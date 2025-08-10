@@ -7,7 +7,7 @@ using System.Text.Json;
 
 public class Program
 {
-    public async static Task Main(string[] args)
+    public static void Main(string[] args)
     {
 
         Console.WriteLine("Main Program Executing...");
@@ -16,30 +16,29 @@ public class Program
 
         //Task<int> t1 = p.GetDatabaseDetail();
 
-        //Task<int> t2 = p.GetDatabaseDetail();
+        //int result1 = t1.Result;
 
-        //int[] results = await Task.WhenAll(t1, t2);
-
-        int result1 = await p.GetDatabaseDetail();
-
-        int result2 = await p.GetDatabaseDetail();
+        int result1 = p.GetDatabaseDetail().Result;
 
         Console.WriteLine("Main Program Completed");
 
-        Console.WriteLine("Result of Task 1 is : {0}", result1);
-        Console.WriteLine("Result of Task 2 is : {0}", result2);
+        Console.WriteLine("Task 1 Result is {0}", result1);
     }
 
-    public async Task<int> GetDatabaseDetail()
+    public Task<int> GetDatabaseDetail()
     {
+        return Task.Run(() =>
+        {
+            int i = 5;
 
-        int i = 5;
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        await Task.Delay(2000);
+            Thread.Sleep(2000);
 
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
 
-        return i;
+            return i;
+
+        });
     }
 }
