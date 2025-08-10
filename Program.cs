@@ -8,11 +8,12 @@ public class Program
     {
         string filepath = @"D:\MyFile.txt";
 
-        using (FileStream fs = new FileStream(filepath, FileMode.Append, FileAccess.Write))
+        using (FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
         {
-            using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+            using (StreamReader reader = new StreamReader(fs))
             {
-                sw.WriteLine("Learning Never ends");
+                string line = reader.ReadLine();
+                Console.WriteLine(line);
             }
 
         }
