@@ -9,33 +9,30 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Notification notification = new Notification();
+        //Console.BackgroundColor = ConsoleColor.Green;
+        //Console.ForegroundColor = ConsoleColor.Blue;
+        //Console.WriteLine(Days.Sunday);
 
-        notification.Notify(new EmailService(), "Hello World !!");
+        //Days day = Days.Sunday;
+
+        Days day = (Days)1;
+
+        int value = (int)day;
+
+        Console.WriteLine(day + " " + value);
+
+        Console.ReadLine();
     }
 
 }
 
-public interface IMessageService
+public enum Days
 {
-    public void SendMessage(string message);
-}
-
-
-public class EmailService : IMessageService
-{
-    public void SendMessage(string message)
-    {
-        Console.WriteLine(message);
-    }
-}
-
-
-public class Notification
-{
-
-    public void Notify(IMessageService messageService, string message)
-    {
-        messageService.SendMessage(message);
-    }
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday
 }
