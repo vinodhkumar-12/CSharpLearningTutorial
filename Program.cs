@@ -8,7 +8,7 @@ using System.Text.Json;
 public class Program
 {
     private static object _lock = new object();
-    private static AutoResetEvent _mre = new AutoResetEvent(true);
+    private static Mutex _mre = new Mutex();
     public static void Main(string[] args)
     {
 
@@ -30,9 +30,9 @@ public class Program
     {
         Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is Waiting...");
         _mre.WaitOne();
-        Thread.Sleep(8000);
+        Thread.Sleep(3000);
         Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} Writing is Completed...");
-        _mre.Set();
+        _mre.ReleaseMutex();
     }
 
 }
