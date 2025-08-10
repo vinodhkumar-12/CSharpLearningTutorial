@@ -8,45 +8,38 @@ using System.Text.Json;
 public class Program
 {
     private static object _lock = new object();
+    private static ManualResetEvent _mre = new ManualResetEvent(false);
     public static void Main(string[] args)
     {
 
         Program p = new Program();
 
-        //new Thread(p.Function).Start();
-
-        //Thread t1 = new Thread(p.Function);
-        //Thread t2 = new Thread(p.Function);
-        //Thread t3 = new Thread(p.Function);
-        //Thread t4 = new Thread(p.Function);
-        //Thread t5 = new Thread(p.Function);
-
-        //t1.Start();
-        //t2.Start();
-        //t3.Start();
-        //t4.Start();
-        //t5.Start();
+        new Thread(p.Write).Start();
 
         for (int i = 0; i < 5; i++)
         {
-            Thread t = new Thread(p.Function);
+            Thread t = new Thread(p.Read);
 
             t.Start();
         }
     }
 
 
-    public void Function()
+    public void Write()
     {
-        try
-        {
-            Monitor.Enter(_lock);
-            Console.WriteLine("Thread Id : {0}", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("Thread Id {0} is Sleeping", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(3000);
-            Console.WriteLine("Thread Id {0} is Completed", Thread.CurrentThread.ManagedThreadId);
-        }
-        finally { Monitor.Exit(_lock); }
+        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is Writing...");
+        _mre.Reset();
+        Thread.Sleep(3000);
+        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} Writing is Completed...");
+        _mre.Set();
 
+    }
+
+    public void Read()
+    {
+        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is Reading...");
+        //Thread.Sleep(5000);
+        _mre.WaitOne();
+        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} Reading is Completed...");
     }
 }
