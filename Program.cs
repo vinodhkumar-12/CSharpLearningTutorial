@@ -12,13 +12,15 @@ public class Program
         {
             using (StreamReader reader = new StreamReader(fs))
             {
-                string line = reader.ReadLine();
-                Console.WriteLine(line);
+                string data = reader.ReadToEnd();
+
+                Console.WriteLine(data);
+
             }
 
         }
 
-        Console.WriteLine("Stream Write append done succesfully");
+        Console.WriteLine("Stream Read append done succesfully");
 
     }
 }
