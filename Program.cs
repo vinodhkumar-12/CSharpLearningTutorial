@@ -10,9 +10,8 @@ public class Program
     public static void Main(string[] args)
     {
         Notification notification = new Notification();
-        notification._messageService = new EmailService();
 
-        notification.Notify("Hello World !!!");
+        notification.Notify(new EmailService(), "Hello World !!");
     }
 
 }
@@ -34,14 +33,9 @@ public class EmailService : IMessageService
 
 public class Notification
 {
-    public IMessageService _messageService { get; set; }
 
-    public void Notify(string message)
+    public void Notify(IMessageService messageService, string message)
     {
-        _messageService.SendMessage(message);
+        messageService.SendMessage(message);
     }
-
 }
-
-
-
