@@ -16,20 +16,18 @@ public class Program
 
         Task t1 = p.GetDatabaseDetail();
 
-        Task.WaitAll(t1);
+        await Task.WhenAll(t1);
 
         Console.WriteLine("Main Program Completed");
     }
 
-    public Task GetDatabaseDetail()
+    public async Task GetDatabaseDetail()
     {
-        return Task.Run(() =>
-        {
-            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-            Thread.Sleep(2000);
+        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
-        });
+        await Task.Delay(2000);
+
+        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
     }
 }
