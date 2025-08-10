@@ -7,14 +7,14 @@ using System.Text.Json;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public async static Task Main(string[] args)
     {
         Program p = new Program();
         Console.WriteLine("Main Thread starting...");
 
-        Task t1 = p.GetDatabaseDetail();
+        Task t1 = p.GetDatabaseDetailAsync();
 
-        Task.WaitAll(t1);
+        await Task.WhenAll(t1);
 
         Console.WriteLine("Main Thread completed...");
 
@@ -22,18 +22,13 @@ public class Program
 
     }
 
-    public Task GetDatabaseDetail()
+    public async Task GetDatabaseDetailAsync()
     {
+        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        return Task.Run(() =>
-        {
+        await Task.Delay(3000);
 
-            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
-
-            Thread.Sleep(5000);
-
-            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
-        });
+        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
 
     }
 }
