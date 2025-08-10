@@ -5,44 +5,43 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 
 
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Notification notification = new Notification();
+        notification._messageService = new EmailService();
+
+        notification.Notify("Hello World !!!");
+    }
+
+}
+
 public interface IMessageService
 {
-    void SendMessage(string Message);
+    public void SendMessage(string message);
 }
 
 
 public class EmailService : IMessageService
 {
-    public void SendMessage(string Message)
+    public void SendMessage(string message)
     {
-        Console.WriteLine(Message);
+        Console.WriteLine(message);
     }
 }
 
 
 public class Notification
 {
-    private readonly IMessageService _messgaeService;
+    public IMessageService _messageService { get; set; }
 
-    public Notification(IMessageService messgaeService)
+    public void Notify(string message)
     {
-        _messgaeService = messgaeService;
-    }
-
-    public void Notify(string Message)
-    {
-        _messgaeService.SendMessage(Message);
-    }
-}
-
-public class Program
-{
-
-    public static void Main(string[] args)
-    {
-        IMessageService messageService = new EmailService();
-        Notification notification = new Notification(messageService);
-        notification.Notify("Hello World");
+        _messageService.SendMessage(message);
     }
 
 }
+
+
+
