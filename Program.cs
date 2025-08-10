@@ -14,20 +14,28 @@ public class Program
 
         Program p = new Program();
 
-        Task t1 = p.GetDatabaseDetail();
+        Task<int> t1 = p.GetDatabaseDetail();
 
-        await Task.WhenAll(t1);
+        Task<int> t2 = p.GetDatabaseDetail();
+
+        int[] results = await Task.WhenAll(t1, t2);
 
         Console.WriteLine("Main Program Completed");
+
+        Console.WriteLine("Result of Task 1 is : {0}", results[0]);
+        Console.WriteLine("Result of Task 2 is : {0}", results[1]);
     }
 
-    public async Task GetDatabaseDetail()
+    public async Task<int> GetDatabaseDetail()
     {
 
+        int i = 5;
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
         await Task.Delay(2000);
 
         Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
+
+        return i;
     }
 }
