@@ -9,26 +9,27 @@ public class Program
 {
     public async static Task Main(string[] args)
     {
+
+        Console.WriteLine("Main Program Executing...");
+
         Program p = new Program();
-        Console.WriteLine("Main Thread starting...");
 
-        Task t1 = p.GetDatabaseDetailAsync();
+        Task t1 = p.GetDatabaseDetail();
 
-        await Task.WhenAll(t1);
+        Task.WaitAll(t1);
 
-        Console.WriteLine("Main Thread completed...");
-
-        //Console.ReadKey();
-
+        Console.WriteLine("Main Program Completed");
     }
 
-    public async Task GetDatabaseDetailAsync()
+    public Task GetDatabaseDetail()
     {
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
+        return Task.Run(() =>
+        {
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is calling...");
 
-        await Task.Delay(3000);
+            Thread.Sleep(2000);
 
-        Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
-
+            Console.WriteLine($"Function Name GetDatabaseDetail from {Thread.CurrentThread.ManagedThreadId} is completed...");
+        });
     }
 }
