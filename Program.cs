@@ -8,7 +8,9 @@ using System.Text.Json;
 public class Program
 {
     private static object _lock = new object();
-    private static Mutex _mre = new Mutex();
+    //private static Semaphore _semaphore = new Semaphore(1, 1);
+
+    private static Semaphore _semaphore = new Semaphore(2, 2);
     public static void Main(string[] args)
     {
 
@@ -29,10 +31,10 @@ public class Program
     public void Write()
     {
         Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is Waiting...");
-        _mre.WaitOne();
+        _semaphore.WaitOne();
         Thread.Sleep(3000);
         Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} Writing is Completed...");
-        _mre.ReleaseMutex();
+        _semaphore.Release();
     }
 
 }
